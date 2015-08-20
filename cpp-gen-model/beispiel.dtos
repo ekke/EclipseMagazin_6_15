@@ -1,0 +1,39 @@
+package org.lunifera.dsl.ext.sample.cpp.qt {
+	
+	import org.lunifera.dsl.ext.cpp.qt.datatypes.*;
+	import org.lunifera.dsl.ext.cpp.qt.lib.types.annotation.*;
+	
+	@SqlCache("")
+	dto Kunde {
+		domainKey int nr;
+		var QString name;
+		var QString ort;
+	}
+	
+	dto Auftrag {
+		domainKey int nr;
+		@DateFormatString("yyyy-MM-dd")
+		var Date datum;
+		var QString bemerkung;
+		
+		ref cascade Position [1..*] positionen opposite auftragsKopf;
+		// implicitly lazy
+		var Schlagwort [0..*] tags;
+		ref lazy Kunde [1] auftraggeber;
+	}
+	
+	dto Position {
+		domainKey QString uuid;
+		var QString bezeichnung;
+		var double Preis;
+		
+		ref Auftrag auftragsKopf opposite positionen;
+	}
+	
+	@CachePolicy("-R-")
+	dto Schlagwort {
+		domainKey QString uuid;
+		var QString text;
+	}
+	
+}

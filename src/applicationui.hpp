@@ -19,6 +19,8 @@
 
 #include <QObject>
 
+#include "DataManager.hpp"
+
 namespace bb
 {
     namespace cascades
@@ -45,6 +47,8 @@ private slots:
 private:
     QTranslator* m_pTranslator;
     bb::cascades::LocaleHandler* m_pLocaleHandler;
+
+    DataManager* mDataManager;
 };
 
 #endif /* ApplicationUI_HPP_ */
