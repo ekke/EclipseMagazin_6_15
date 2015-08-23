@@ -15,7 +15,7 @@ class Position: public QObject
 
 	Q_PROPERTY(QString uuid READ uuid WRITE setUuid NOTIFY uuidChanged FINAL)
 	Q_PROPERTY(QString bezeichnung READ bezeichnung WRITE setBezeichnung NOTIFY bezeichnungChanged FINAL)
-	Q_PROPERTY(double Preis READ Preis WRITE setPreis NOTIFY PreisChanged FINAL)
+	Q_PROPERTY(double preis READ preis WRITE setPreis NOTIFY preisChanged FINAL)
 	Q_PROPERTY(Auftrag* auftragsKopf READ auftragsKopf)
 
 
@@ -40,8 +40,8 @@ public:
 	void setUuid(QString uuid);
 	QString bezeichnung() const;
 	void setBezeichnung(QString bezeichnung);
-	double Preis() const;
-	void setPreis(double Preis);
+	double preis() const;
+	void setPreis(double preis);
 	Auftrag* auftragsKopf() const;
 	// no SETTER auftragsKopf() is only convenience method to get the parent
 
@@ -53,7 +53,7 @@ public:
 
 	void uuidChanged(QString uuid);
 	void bezeichnungChanged(QString bezeichnung);
-	void PreisChanged(double Preis);
+	void preisChanged(double preis);
 	// no SIGNAL auftragsKopf is only convenience way to get the parent
 	
 

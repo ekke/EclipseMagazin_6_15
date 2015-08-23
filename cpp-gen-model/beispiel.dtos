@@ -25,7 +25,7 @@ package org.lunifera.dsl.ext.sample.cpp.qt {
 	dto Position {
 		domainKey QString uuid;
 		var QString bezeichnung;
-		var double Preis;
+		var double preis;
 		
 		ref Auftrag auftragsKopf opposite positionen;
 	}

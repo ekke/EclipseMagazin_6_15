@@ -6,13 +6,13 @@
 // keys of QVariantMap used in this APP
 static const QString uuidKey = "uuid";
 static const QString bezeichnungKey = "bezeichnung";
-static const QString PreisKey = "Preis";
+static const QString preisKey = "preis";
 // no key for auftragsKopf
 
 // keys used from Server API etc
 static const QString uuidForeignKey = "uuid";
 static const QString bezeichnungForeignKey = "bezeichnung";
-static const QString PreisForeignKey = "Preis";
+static const QString preisForeignKey = "preis";
 // no key for auftragsKopf
 
 /*
@@ -39,7 +39,7 @@ void Position::fillFromMap(const QVariantMap& positionMap)
 		mUuid = mUuid.left(mUuid.length() - 1);
 	}	
 	mBezeichnung = positionMap.value(bezeichnungKey).toString();
-	mPreis = positionMap.value(PreisKey).toDouble();
+	mPreis = positionMap.value(preisKey).toDouble();
 	// mAuftragsKopf is parent (Auftrag* containing Position)
 }
 /*
@@ -58,7 +58,7 @@ void Position::fillFromForeignMap(const QVariantMap& positionMap)
 		mUuid = mUuid.left(mUuid.length() - 1);
 	}	
 	mBezeichnung = positionMap.value(bezeichnungForeignKey).toString();
-	mPreis = positionMap.value(PreisForeignKey).toDouble();
+	mPreis = positionMap.value(preisForeignKey).toDouble();
 	// mAuftragsKopf is parent (Auftrag* containing Position)
 }
 /*
@@ -77,7 +77,7 @@ void Position::fillFromCacheMap(const QVariantMap& positionMap)
 		mUuid = mUuid.left(mUuid.length() - 1);
 	}	
 	mBezeichnung = positionMap.value(bezeichnungKey).toString();
-	mPreis = positionMap.value(PreisKey).toDouble();
+	mPreis = positionMap.value(preisKey).toDouble();
 	// mAuftragsKopf is parent (Auftrag* containing Position)
 }
 
@@ -109,7 +109,7 @@ QVariantMap Position::toMap()
 	QVariantMap positionMap;
 	positionMap.insert(uuidKey, mUuid);
 	positionMap.insert(bezeichnungKey, mBezeichnung);
-	positionMap.insert(PreisKey, mPreis);
+	positionMap.insert(preisKey, mPreis);
 	// mAuftragsKopf points to Auftrag* containing Position
 	return positionMap;
 }
@@ -124,7 +124,7 @@ QVariantMap Position::toForeignMap()
 	QVariantMap positionMap;
 	positionMap.insert(uuidForeignKey, mUuid);
 	positionMap.insert(bezeichnungForeignKey, mBezeichnung);
-	positionMap.insert(PreisForeignKey, mPreis);
+	positionMap.insert(preisForeignKey, mPreis);
 	// mAuftragsKopf points to Auftrag* containing Position
 	return positionMap;
 }
@@ -171,17 +171,17 @@ void Position::setBezeichnung(QString bezeichnung)
 	}
 }
 // ATT 
-// Optional: Preis
-double Position::Preis() const
+// Optional: preis
+double Position::preis() const
 {
 	return mPreis;
 }
 
-void Position::setPreis(double Preis)
+void Position::setPreis(double preis)
 {
-	if (Preis != mPreis) {
-		mPreis = Preis;
-		emit PreisChanged(Preis);
+	if (preis != mPreis) {
+		mPreis = preis;
+		emit preisChanged(preis);
 	}
 }
 // REF
